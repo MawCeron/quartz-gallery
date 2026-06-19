@@ -12,7 +12,7 @@ var Gallery = () => {
           return `<div class="quartz-gallery">
 ${imgs}
 </div>
-<div id="quartz-lightbox" onclick="__galleryClose()"><img id="quartz-lightbox-img" src="" /></div>`;
+<div id="quartz-lightbox" onclick="__galleryClose()"></div>`;
         }
       );
     },
@@ -69,17 +69,18 @@ ${imgs}
             script: `
 window.__galleryOpen = function(img) {
   const lb = document.getElementById('quartz-lightbox');
-  const lbImg = document.getElementById('quartz-lightbox-img');
-  lbImg.src = img.src;
+  lb.innerHTML = '<img src="' + img.src + '" />';
   lb.classList.add('active');
 }
 window.__galleryClose = function() {
-  document.getElementById('quartz-lightbox').classList.remove('active');
+  const lb = document.getElementById('quartz-lightbox');
+  lb.classList.remove('active');
+  lb.innerHTML = '';
 }
 document.addEventListener('keydown', function(e) {
   if (e.key === 'Escape') window.__galleryClose();
 });
-            `
+`
           }
         ]
       };
