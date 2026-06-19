@@ -20,6 +20,7 @@ ${imgs}
       return {
         css: [
           {
+            inline: true,
             content: `
 .quartz-gallery {
   columns: 3 200px;
