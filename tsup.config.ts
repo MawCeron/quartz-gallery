@@ -18,4 +18,7 @@ export default defineConfig({
   dts: true,
   noExternal: [/.*/],
   external: SINGLETON_EXTERNALS,
+  outExtension() {
+    return { js: ".mjs" }
+  },
 })
